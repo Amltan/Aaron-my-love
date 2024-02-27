@@ -10,9 +10,26 @@ class newsPage extends StatelessWidget {
        appBar: AppBar(),
        drawer: appDrawer(),
        body: Center(
-        child: Column(children: [
+        child: Expanded(child: SingleChildScrollView(
+          child: Wrap(children: [
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
             newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
         ]),
+        )
+        )
        ),
     );
   }

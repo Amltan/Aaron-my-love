@@ -5,6 +5,7 @@ import 'package:moderate_activity/components/moviecard.dart';
 class homeScreen extends StatelessWidget {
   const homeScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +57,7 @@ class homeScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width * .85,
               color: Colors.white30,
-              child: const Padding(
+              child:  Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,30 +84,38 @@ class homeScreen extends StatelessWidget {
                    
                       
                    ],),
-                    Wrap(
-                      children: [
-                        moveiCard(
-                          imageUrl: "https://i.imgur.com/6hdrj8h.jpeg",
-                          movieTitle: "DOGHOOD",
-                        ),
-                        moveiCard(
-                          imageUrl: "https://i.imgur.com/ZPWP6hQ.jpeg",
-                          movieTitle: "REDDOT",
-                        ),
-                        moveiCard(
-                          imageUrl: "https://i.imgur.com/lweGxbJ.jpeg",
-                          movieTitle: "Avengers",
-                        ),
-                        moveiCard(
-                          imageUrl: "https://i.imgur.com/uGaGSKz.png",
-                          movieTitle: "Cat NASA",
-                        ),
-                        moveiCard(
-                          imageUrl: "https://i.imgur.com/1gI3tYs.jpeg",
-                          movieTitle: "Left Behind",
-                        ),
-                      
-                      ],
+                    Expanded(
+                      child: SingleChildScrollView(child: Wrap(
+                        children: [
+                          moveiCard(
+                            imageUrl: "https://i.imgur.com/6hdrj8h.jpeg",
+                            movieTitle: "DOGHOOD",
+                          ),
+                          moveiCard(
+                            imageUrl: "https://i.imgur.com/ZPWP6hQ.jpeg",
+                            movieTitle: "REDDOT",
+                          ),
+                          moveiCard(
+                            imageUrl: "https://i.imgur.com/lweGxbJ.jpeg",
+                            movieTitle: "Avengers",
+                          ),
+                          moveiCard(
+                            imageUrl: "https://i.imgur.com/uGaGSKz.png",
+                            movieTitle: "Cat NASA",
+                          ),
+                          moveiCard(
+                            imageUrl: "https://i.imgur.com/1gI3tYs.jpeg",
+                            movieTitle: "Left Behind",
+                          ),
+                          
+
+                           for (int i = 0; i < 100; i++)   moveiCard(
+                            imageUrl: "https://i.imgur.com/1gI3tYs.jpeg",
+                            movieTitle: "Left Behind",
+                          ),
+                        
+                        ],
+                      ),)
                     ),
                   ],
                 ),
@@ -116,3 +125,5 @@ class homeScreen extends StatelessWidget {
         ));
   }
 }
+
+
