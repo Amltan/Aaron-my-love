@@ -12,21 +12,9 @@ class newsPage extends StatelessWidget {
        body: Center(
         child: Expanded(child: SingleChildScrollView(
           child: Wrap(children: [
+            for (int i = 0; i < 20; i++)   
             newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
-            newsCard(imageUrl: 'https://i.imgur.com/k2CIc6T.jpeg',),
+          
         ]),
         )
         )

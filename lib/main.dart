@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       routes:{
          '/login':(context)=>const LoginScreen() ,
-         '/home':(context)=>const homeScreen() ,
+         '/home':(context)=>const HomeScreen() ,
          '/news':(context)=>const newsPage() ,
          '/about':(context)=>const aboutPage() ,
          '/myAccount':(context)=>const myAccount() ,
@@ -181,15 +181,15 @@ class LoginTab extends StatelessWidget {
             ),
             Text(
               "Forgot your password",
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.teal,
                   fontSize: 15,
                   decoration: TextDecoration.underline),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            Align(
+            const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Sign in with",
@@ -199,97 +199,112 @@ class LoginTab extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width * .1,
-                    decoration: BoxDecoration(color: Colors.white),
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Flexible(
-                            child: Image(
-                                image: NetworkImage(
-                              "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png",
-                            )),
+                  child: InkWell(
+                    onTap: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                    child: Container(
+                      height: 70,
+                      width: MediaQuery.of(context).size.width * .1,
+                      decoration: const BoxDecoration(color: Colors.white),
+                      child: const Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Flexible(
+                              child: Image(
+                                  image: NetworkImage(
+                                "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png",
+                              )),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Google",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.black),
-                        )
-                      ],
+                          Text(
+                            "Google",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.black),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 20,
-                ),
-                Center(
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width * .14,
-                    decoration: BoxDecoration(color: Colors.lightBlueAccent),
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Flexible(
-                            child: Image(
-                                image: NetworkImage(
-                              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/2491px-Logo_of_Twitter.svg.png",
-                            )),
-                          ),
-                        ),
-                        Text(
-                          "Twitter",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Expanded(
-                  child: Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width * .10,
-                    decoration: BoxDecoration(color: Colors.blue),
-                    child: const Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Flexible(
-                            child: Image(
-                                image: NetworkImage(
-                              "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/2048px-Facebook_f_logo_%282021%29.svg.png",
-                            )),
+                  child: InkWell(
+                    onTap: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                    child: Container(
+                      height: 70,
+                      width: MediaQuery.of(context).size.width * .14,
+                      decoration: const BoxDecoration(color: Colors.lightBlueAccent),
+                      child: const Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Flexible(
+                              child: Image(
+                                  image: NetworkImage(
+                                "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/2491px-Logo_of_Twitter.svg.png",
+                              )),
+                            ),
                           ),
-                        ),
-                        Expanded(
-                            child: Text(
-                          "Facebook",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.white),
-                        ))
-                      ],
+                          Text(
+                            "Twitter",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                    child: Container(
+                      height: 70,
+                      width: MediaQuery.of(context).size.width * .10,
+                      decoration: BoxDecoration(color: Colors.blue),
+                      child: const Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Flexible(
+                              child: Image(
+                                  image: NetworkImage(
+                                "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/2048px-Facebook_f_logo_%282021%29.svg.png",
+                              )),
+                            ),
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Facebook",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.white),
+                          ))
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 0),
+            const Padding(
+              padding: EdgeInsets.only(left: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -301,7 +316,7 @@ class LoginTab extends StatelessWidget {
                 ],
               ),
             ),
-            Text("By signing up, I agree to Awwwards's",
+            const Text("By signing up, I agree to Awwwards's",
                 style: TextStyle(fontSize: 16)),
             SizedBox(
               height: 20,

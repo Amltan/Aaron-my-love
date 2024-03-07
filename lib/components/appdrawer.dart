@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class appDrawer extends StatelessWidget {
   const appDrawer({super.key});
 
@@ -8,7 +9,7 @@ class appDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(child: Text("Header")),
+          const DrawerHeader(child: Text("PAGES")),
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, '/home');

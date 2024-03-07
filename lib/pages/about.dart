@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moderate_activity/components/appdrawer.dart';
+// ignore: camel_case_types
 class aboutPage extends StatelessWidget {
   const aboutPage({super.key});
 
@@ -7,11 +8,13 @@ class aboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(),
-       drawer: appDrawer(),
-       body: Column(
-        children: [
-          Text("About")
-        ],
+       drawer: const appDrawer(),
+       body: const Center(
+         child: Column(
+          children: [
+            Text("ABOUT PAGE")
+          ],
+         ),
        ),
     );
   }
