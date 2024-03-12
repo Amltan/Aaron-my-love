@@ -3,6 +3,7 @@ import 'package:moderate_activity/pages/about.dart';
 import 'package:moderate_activity/pages/home.dart';
 import 'package:moderate_activity/pages/myAccount.dart';
 import 'package:moderate_activity/pages/news.dart';
+import 'package:moderate_activity/pages/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,22 +15,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const LoginScreen(),
-      initialRoute: '/login',
-      routes:{
-         '/login':(context)=>const LoginScreen() ,
-         '/home':(context)=>const HomeScreen() ,
-         '/news':(context)=>const newsPage() ,
-         '/about':(context)=>const aboutPage() ,
-         '/myAccount':(context)=>const myAccount() ,
-
-      } 
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const LoginScreen(),
+        initialRoute: '/login',
+        routes: {
+          '/login': (context) => const LoginScreen(),
+          '/home': (context) => const HomeScreen(),
+          '/news': (context) => const newsPage(),
+          '/about': (context) => const aboutPage(),
+          '/myAccount': (context) => const myAccount(),
+          '/register': (context) => const RegisterPage(),
+        });
   }
 }
 
@@ -96,12 +96,17 @@ class LoginTab extends StatelessWidget {
                   style: TextStyle(fontSize: 18),
                 ),
                 Center(
-                    child: Text(
-                  "Register now",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.teal,
-                      fontWeight: FontWeight.bold),
+                    child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
+                  child: Text(
+                    "Register now",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.teal,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ))
               ],
             ),
@@ -201,8 +206,8 @@ class LoginTab extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                        Navigator.pushNamed(context, '/home');
-                      },
+                      Navigator.pushNamed(context, '/home');
+                    },
                     child: Container(
                       height: 70,
                       width: MediaQuery.of(context).size.width * .1,
@@ -236,12 +241,13 @@ class LoginTab extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                        Navigator.pushNamed(context, '/home');
-                      },
+                      Navigator.pushNamed(context, '/home');
+                    },
                     child: Container(
                       height: 70,
                       width: MediaQuery.of(context).size.width * .14,
-                      decoration: const BoxDecoration(color: Colors.lightBlueAccent),
+                      decoration:
+                          const BoxDecoration(color: Colors.lightBlueAccent),
                       child: const Row(
                         children: [
                           Padding(
@@ -271,8 +277,8 @@ class LoginTab extends StatelessWidget {
                 Expanded(
                   child: InkWell(
                     onTap: () {
-                        Navigator.pushNamed(context, '/home');
-                      },
+                      Navigator.pushNamed(context, '/home');
+                    },
                     child: Container(
                       height: 70,
                       width: MediaQuery.of(context).size.width * .10,
