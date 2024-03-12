@@ -9,34 +9,36 @@ class appDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(child: Text("PAGES")),
+          const DrawerHeader(
+            child: Text("PAGES"),
+          ),
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, '/home');
             },
-            leading: Icon(Icons.house),
-            title: Text("Home"),
+            leading: const Icon(Icons.house),
+            title: const Text("Home"),
           ),
           ListTile(
             onTap: () {
-               Navigator.pushNamed(context, '/news');
+              Navigator.pushNamed(context, '/news');
             },
-            leading: Icon(Icons.newspaper),
-            title: Text("News"),
+            leading: const Icon(Icons.newspaper),
+            title: const Text("News"),
           ),
           ListTile(
             onTap: () {
-               Navigator.pushNamed(context, '/about');
+              Navigator.pushNamed(context, '/about');
             },
-            leading: Icon(Icons.question_answer),
-            title: Text("About"),
+            leading: const Icon(Icons.question_answer),
+            title: const Text("About"),
           ),
           ListTile(
             onTap: () {
-               Navigator.pushNamed(context, '/myAccount');
+              Navigator.pushNamed(context, '/myAccount');
             },
-            leading: Icon(Icons.verified_user),
-            title: Text("My Account"),
+            leading: const Icon(Icons.verified_user),
+            title: const Text("My Account"),
           ),
           Expanded(
             child: Align(
@@ -45,12 +47,14 @@ class appDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, '/login');
                 },
-                title: Text("Logout"),
+                title: const Text("Logout"),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
+
+// trired to layout builder here no work

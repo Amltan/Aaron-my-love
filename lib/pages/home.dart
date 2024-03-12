@@ -42,44 +42,57 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: const appDrawer(),
+      drawer: appDrawer(),
       body: Row(
         children: [
+          
           Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width * .15,
             color: Colors.grey[200],
-            child: const Padding(
+            child:  Padding(
               padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ListTile(
-                    title: Text("GENRES"),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(hintText: "Search"),
-                  ),
-                  ListTile(
-                    title: Text("ACTION"),
+                   ListTile(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
+                    leading: const Icon(Icons.house),
+                    title: const Text("Home"),
                   ),
                   ListTile(
-                    title: Text("ADVENTURE"),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/news');
+                    },
+                    leading: const Icon(Icons.newspaper),
+                    title: const Text("News"),
                   ),
                   ListTile(
-                    title: Text("BIOGRAPHY"),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/about');
+                    },
+                    leading: const Icon(Icons.question_answer),
+                    title: const Text("About"),
                   ),
                   ListTile(
-                    title: Text("COMEDY"),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/myAccount');
+                    },
+                    leading: const Icon(Icons.verified_user),
+                    title: const Text("My Account"),
                   ),
-                  ListTile(
-                    title: Text("CRIME"),
-                  ),
-                  ListTile(
-                    title: Text("DRAMA"),
-                  ),
-                  ListTile(
-                    title: Text("FAMILY"),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: ListTile(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
+                        title: const Text("Logout"),
+                      ),
+                    ),
                   ),
                 ],
               ),

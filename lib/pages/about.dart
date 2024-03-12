@@ -8,11 +8,19 @@ class aboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(),
-       drawer: const appDrawer(),
+       drawer:  appDrawer(),
        body: const Center(
          child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("ABOUT PAGE")
+            Padding(
+              padding: EdgeInsets.all(50.0),
+              child: Image(image: NetworkImage('https://i.imgur.com/JRF4UJK.jpeg'),width: 500,height: 500,),
+            ),
+
+
+            
           ],
          ),
        ),
