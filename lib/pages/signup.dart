@@ -1,135 +1,86 @@
 import 'package:flutter/material.dart';
+
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  const RegisterPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Padding(
-padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * .3,left: MediaQuery.of(context).size.width * .3),
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.3),
         child: Center(
           child: Container(
-            
-              height: 800,
-              decoration: BoxDecoration(
-                color: Colors.grey[100]
-              ),
+            height: 800,
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              borderRadius: BorderRadius.circular(16),
+            ),
             child: Column(
-              
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-          
-            children: [
-              
-               Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Firstname",
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2.5)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey))),
-                               ),
-               ), Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Lastname",
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2.5)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey))),
-                               ),
-               ), Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Email Address",
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2.5)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey))),
-                               ),
-               ), Padding(
-                 padding: const EdgeInsets.all(8.0),
-                 child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Username",
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2.5)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey))),
-                               ),
-               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Password",
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2.5)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey))),
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextField(
+                  decoration: _inputDecoration("First Name"),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Confirm Password",
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 2.5)),
-                      fillColor: Colors.white,
-                      filled: true,
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey))),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: _inputDecoration("Last Name"),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  height: 80,
-                  decoration: BoxDecoration(color: Colors.teal),
-                  child: Center(
-                    child: InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/home');
-                        },
-                        child: Text(
-                          "Register and Login",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        )),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: _inputDecoration("Email Address"),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: _inputDecoration("Username"),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: _inputDecoration("Password"),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: _inputDecoration("Confirm Password"),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.teal,
+                    minimumSize: const Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  child: const Text(
+                    "Register and Login",
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          ),
-        )
+        ),
+      ),
+    );
+  }
+
+  InputDecoration _inputDecoration(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      filled: true,
+      fillColor: Colors.white,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: Colors.grey, width: 2.5),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: BorderSide(color: Colors.grey),
       ),
     );
   }

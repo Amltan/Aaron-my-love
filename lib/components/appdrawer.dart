@@ -14,28 +14,36 @@ class appDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, '/home');
+              if (ModalRoute.of(context)?.settings.name != '/home') {
+                Navigator.pushReplacementNamed(context, '/home');
+              } 
             },
             leading: const Icon(Icons.house),
             title: const Text("Home"),
           ),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, '/news');
+              if (ModalRoute.of(context)?.settings.name != '/news') {
+                Navigator.pushReplacementNamed(context, '/news');
+              } 
             },
             leading: const Icon(Icons.newspaper),
             title: const Text("News"),
           ),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, '/about');
+              if (ModalRoute.of(context)?.settings.name != '/about') {
+                Navigator.pushReplacementNamed(context, '/about');
+              } 
             },
             leading: const Icon(Icons.question_answer),
             title: const Text("About"),
           ),
           ListTile(
             onTap: () {
-              Navigator.pushNamed(context, '/myAccount');
+              if (ModalRoute.of(context)?.settings.name != '/myAccount') {
+                Navigator.pushReplacementNamed(context, '/myAccount');
+              }
             },
             leading: const Icon(Icons.verified_user),
             title: const Text("My Account"),
@@ -45,7 +53,7 @@ class appDrawer extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.pushReplacementNamed(context, '/login');
                 },
                 title: const Text("Logout"),
               ),
