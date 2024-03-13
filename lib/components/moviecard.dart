@@ -1,45 +1,98 @@
 import 'package:flutter/material.dart';
 
-class moveiCard extends StatelessWidget {
-  final String movieTitle, imageUrl;
-  const moveiCard(
-      {super.key, required this.movieTitle, required this.imageUrl});
+class movieCard extends StatelessWidget {
+  final String movieTitle, imageUrl,description;
+
+  const movieCard({
+    Key? key,
+    required this.movieTitle,
+    required this.imageUrl,
+    required this.description,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double cardWidth = MediaQuery.of(context).size.width * 0.26;
+    double cardHeight = MediaQuery.of(context).size.height * 0.3;
+
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Card(
+        elevation: 4, // Add elevation for a raised effect
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         child: Container(
-          width: MediaQuery.of(context).size.width * .15,
-          height: MediaQuery.of(context).size.height * .24,
+          width: cardWidth,
+          height: cardHeight,
+          padding: EdgeInsets.all(8.0), // Add padding for content spacing
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(movieTitle),
-              const Divider(),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image(
-                    image: NetworkImage(imageUrl),
-                    height: 180,
-                  ),
-                  const Column(
-                    children: [
-                      Text("UNIVERSAL STUDIOS"),
-                      Divider(),
-                      Text("Jan 17, 2024"),
-                      Divider(),
-                      Text(
-                        'A really long text',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 10),
-                      )
-                    ],
-                  )
-                ],
+              Text(
+                movieTitle,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const Divider(),
+              SizedBox(height: 8), // Add spacing below the title
+              Divider(), // Horizontal divider below the title
+              SizedBox(height: 8), // Add spacing below the divider
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        imageUrl,
+                        height: cardHeight * 0.6,
+                        width: cardWidth * 0.4, // Adjust image width
+                        fit: BoxFit.cover, // Ensure the image covers its area
+                      ),
+                    ),
+                    SizedBox(width: 10), // Add spacing between image and text
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "UNIVERSAL STUDIOS",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Divider(), // Horizontal divider
+                          Text(
+                            "Jan 17, 2024",
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          Divider(), // Horizontal divider
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Text(
+                               description,
+                
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 8), // Add spacing above the icons row
+              Divider(), // Horizontal divider above the icons row
+              SizedBox(height: 8), // Add spacing below the divider
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

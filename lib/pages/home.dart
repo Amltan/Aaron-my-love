@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:moderate_activity/components/appdrawer.dart';
 import 'package:moderate_activity/components/moviecard.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:moderate_activity/data/movies.dart';
 import 'package:moderate_activity/models/moviemodels.dart';
+import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,27 +16,54 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<MovieData> movieList = [];
   List<Map<String, Object>> movieData = [];
-
+  String query = '';
   @override
   void initState() {
     super.initState();
     loadData();
   }
 
-  void loadData() {
-    movieData = sampledata().movies;
+  Future<void> loadData() async {
+    try {
+      final response = await http
+          .get(
+            Uri.parse(
+                'https://www.themealdb.com/api/json/v1/1/search.php?f=$query'),
+          )
+          .timeout(Duration(seconds: 10));
 
-    for (int i = 0; i < movieData.length; i++) {
-      final movie = movieData[i];
-      MovieData movieObject = MovieData(
-        id: movie['id'] as String,
-        title: movie['title'] as String,
-        price: movie['price'] as double,
-        pic: movie['pic'] as String,
-        desc: movie['desc'] as String,
-      );
-      movieList.add(movieObject);
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> jsonData = jsonDecode(response.body);
+        final List<dynamic> meals = jsonData['meals'] ?? [];
+        List<MovieData> fetchedMovies = meals.map((meal) {
+          return MovieData(
+            id: meal['idMeal'],
+            title: meal['strMeal'],
+            pic: meal['strMealThumb'],
+            price: 1,
+            desc: meal['strInstructions'],
+          );
+        }).toList();
+
+        setState(() {
+          movieList = fetchedMovies;
+        });
+      } else {
+        print('Failed to load movie data: ${response.statusCode}');
+        setState(() {
+          movieList = [];
+        });
+      }
+    } catch (e) {
+      print('Error loading data: $e');
+      setState(() {
+        movieList = [];
+      });
     }
+  }
+
+  void refetchData() {
+    loadData();
   }
 
   @override
@@ -66,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   '/home') {
                                 Navigator.pushReplacementNamed(
                                     context, '/home');
-                              } 
+                              }
                             },
                             leading: const Icon(Icons.house),
                             title: const Text("Home"),
@@ -77,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   '/news') {
                                 Navigator.pushReplacementNamed(
                                     context, '/news');
-                              } 
+                              }
                             },
                             leading: const Icon(Icons.newspaper),
                             title: const Text("News"),
@@ -131,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('Movies'),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text("Season"),
@@ -142,6 +170,36 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text("Movie"),
                         Text("Film"),
                         Text("All"),
+
+                        Flexible(
+                          child: TextField(
+                            onChanged: (value) {
+                              // When the text in the search field changes, update the query
+                              setState(() {
+                                query = value;
+                              });
+                            },
+                            decoration: InputDecoration(
+                              hintText: 'Search...',
+                              filled: true,
+                              fillColor: Colors.grey[200],
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                            width:
+                                10), // Add spacing between the text field and the button
+                        ElevatedButton(
+                          onPressed: () {
+                            // Fetch data only when the button is clicked
+                            refetchData();
+                          },
+                          child: Text('Search'),
+                        ),
                       ],
                     ),
                     const Divider(),
@@ -151,22 +209,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text("Sort by: Popularity"),
                       ],
                     ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Wrap(
-                          children: List.generate(
-                            movieList.length,
-                            (index) => Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: moveiCard(
-                                imageUrl: movieList[index].pic,
-                                movieTitle: movieList[index].title,
+                    if (movieList.isEmpty)
+                      const Text('Go Search No movies found')
+                    else
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Wrap(
+                            children: List.generate(
+                              movieList.length,
+                              (index) => Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: movieCard(
+                                  imageUrl: movieList[index].pic,
+                                  movieTitle: movieList[index].title,
+                                  description:movieList[index].desc ,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -178,9 +240,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget createCards(int index) {
-    return moveiCard(
+    return movieCard(
       imageUrl: movieList[index].pic,
       movieTitle: movieList[index].title,
+      description:movieList[index].desc ,
     );
   }
 }
