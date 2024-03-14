@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final response = await http
           .get(
             Uri.parse(
-                'https://www.themealdb.com/api/json/v1/1/search.php?f=$query'),
+                'https://www.themealdb.com/api/json/v1/1/search.php?s=$query'),
           )
           .timeout(Duration(seconds: 10));
 
@@ -69,9 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false, // Disable the back arrow
-      ),
+      appBar: AppBar(),
       drawer: MediaQuery.of(context).size.width > 1100 ? null : appDrawer(),
       body: Expanded(
         child: Row(
@@ -163,14 +161,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text("Season"),
+
                         Icon(Icons.arrow_left_rounded),
                         Text("Spring"),
                         Icon(Icons.arrow_right_rounded),
                         Text("Television"),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text("Movie"),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text("Film"),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text("All"),
-
+                        SizedBox(
+                          width: 10,
+                        ),
                         Flexible(
                           child: TextField(
                             onChanged: (value) {
@@ -222,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: movieCard(
                                   imageUrl: movieList[index].pic,
                                   movieTitle: movieList[index].title,
-                                  description:movieList[index].desc ,
+                                  description: movieList[index].desc,
                                 ),
                               ),
                             ),
@@ -243,7 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return movieCard(
       imageUrl: movieList[index].pic,
       movieTitle: movieList[index].title,
-      description:movieList[index].desc ,
+      description: movieList[index].desc,
     );
   }
 }

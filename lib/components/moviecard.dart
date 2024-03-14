@@ -18,14 +18,14 @@ class movieCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Card(
-        elevation: 4, // Add elevation for a raised effect
+        elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Container(
           width: cardWidth,
           height: cardHeight,
-          padding: EdgeInsets.all(8.0), // Add padding for content spacing
+          padding: EdgeInsets.all(8.0), 
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,9 +36,9 @@ class movieCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8), // Add spacing below the title
-              Divider(), // Horizontal divider below the title
-              SizedBox(height: 8), // Add spacing below the divider
+              SizedBox(height: 8),
+              Divider(), 
+              SizedBox(height: 8), 
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,11 +48,11 @@ class movieCard extends StatelessWidget {
                       child: Image.network(
                         imageUrl,
                         height: cardHeight * 0.6,
-                        width: cardWidth * 0.4, // Adjust image width
-                        fit: BoxFit.cover, // Ensure the image covers its area
+                        width: cardWidth * 0.4, 
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(width: 10), // Add spacing between image and text
+                    SizedBox(width: 10), 
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,14 +64,14 @@ class movieCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Divider(), // Horizontal divider
+                          Divider(), 
                           Text(
                             "Jan 17, 2024",
                             style: TextStyle(
                               fontSize: 12,
                             ),
                           ),
-                          Divider(), // Horizontal divider
+                          Divider(), 
                           Expanded(
                             child: SingleChildScrollView(
                               child: Text(
@@ -90,9 +90,9 @@ class movieCard extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 8), // Add spacing above the icons row
-              Divider(), // Horizontal divider above the icons row
-              SizedBox(height: 8), // Add spacing below the divider
+              SizedBox(height: 8), 
+              Divider(), 
+              SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

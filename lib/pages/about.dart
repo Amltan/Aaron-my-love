@@ -8,10 +8,8 @@ class aboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false, // Disable the back arrow
-      ),
-      drawer: MediaQuery.of(context).size.width > 1100 ? null : appDrawer(),
+      appBar: AppBar(),
+      drawer: MediaQuery.of(context).size.width > 1100 ? null : const appDrawer(),
       body: Center(
         child: Row(
           children: [
